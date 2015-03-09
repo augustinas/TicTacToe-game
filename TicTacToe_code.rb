@@ -59,18 +59,14 @@ class Game
   end
 
   def play
-    puts "Let's start playing! Here is our board:"
+    puts "Let's start playing! Here is our board!"
     @board.display
     i = 1
     while i <= 9
-      puts "#{@current_player.name} it is your turn. Enter the row number followed by the column number of where you want to mark it."
-      row = gets.chomp.to_i
-      column = gets.chomp.to_i
-      @board.mark_cell(row, column, @current_player.mark)
-      @board.display
+      take_turn
       if won?
         puts "Game is finished! #{@current_player.name} won it!"
-        return # Exits the method (terminates program) when winning conditions is met
+        return # Exits the method (terminates program) when winning condition is met
       end
       switch_players
       i += 1
@@ -85,6 +81,14 @@ class Game
 
   def switch_players
     @current_player, @other_player = @other_player, @current_player
+  end
+
+  def take_turn
+    puts "#{@current_player.name} it is your turn. Enter the row number, press RETURN, then enter column number."
+    row = gets.chomp.to_i
+    column = gets.chomp.to_i
+    @board.mark_cell(row, column, @current_player.mark)
+    @board.display
   end
 
   def won?
