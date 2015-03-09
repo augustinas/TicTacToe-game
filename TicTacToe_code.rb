@@ -41,6 +41,10 @@ class Board
     end
   end
 
+  def cell_empty?(row, column)
+    @grid[row - 1][column - 1].mark == "O"
+  end
+
   private
 
   def default_grid
@@ -85,9 +89,16 @@ class Game
 
   def take_turn
     puts "#{@current_player.name} it is your turn. Enter the row number, press RETURN, then enter column number."
-    row = gets.chomp.to_i
-    column = gets.chomp.to_i
-    @board.mark_cell(row, column, @current_player.mark)
+    row = gets.chomp
+    column = gets.chomp
+    # Ensuring that the user provides valid data
+    until row.match(/[1-3]/) && column.match(/[1-3]/) && @board.cell_empty?(row.to_i, column.to_i)
+      puts "The value pair entered is not valid. Please try again: "
+      row = gets.chomp
+      column = gets.chomp
+    end
+
+    @board.mark_cell(row.to_i, column.to_i, @current_player.mark)
     @board.display
   end
 
