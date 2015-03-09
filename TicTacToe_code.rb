@@ -88,17 +88,15 @@ class Game
   end
 
   def take_turn
-    puts "#{@current_player.name} it is your turn. Enter the row number, press RETURN, then enter column number."
-    row = gets.chomp
-    column = gets.chomp
+    puts "#{@current_player.name} it is your turn. Enter the row number, a space and the column number."
+    input = gets.chomp.split(" ")
     # Ensuring that the user provides valid data
-    until row.match(/[1-3]/) && column.match(/[1-3]/) && @board.cell_empty?(row.to_i, column.to_i)
+    until input[0].match(/[1-3]/) && input[1].match(/[1-3]/) && @board.cell_empty?(input[0].to_i, input[1].to_i)
       puts "The value pair entered is not valid. Please try again: "
-      row = gets.chomp
-      column = gets.chomp
+      input = gets.chomp.split(" ")
     end
 
-    @board.mark_cell(row.to_i, column.to_i, @current_player.mark)
+    @board.mark_cell(input[0].to_i, input[1].to_i, @current_player.mark)
     @board.display
   end
 
