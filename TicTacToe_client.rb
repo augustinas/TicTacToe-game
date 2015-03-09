@@ -1,4 +1,4 @@
-require './TicTacToe_workshop.rb'
+require './TicTacToe_code.rb'
 
 play1 = Player.new({:mark => "*", :name => "P"})
 play2 = Player.new({:mark => "-", :name => "M"})
