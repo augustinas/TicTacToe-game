@@ -1,3 +1,3 @@
-An interactive Tic Tac Toe terminal game for 2 players.
+#### An Interactive Classical Tic-Tac-Toe Game ####
 
-### Created by Augustinas Markevicius as part of a Makers Academy's Ronin course ###
+///Created by Augustinas Markevicius as part of a Makers Academy's Ronin online course///
